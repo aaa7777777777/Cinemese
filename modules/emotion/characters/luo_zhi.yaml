@@ -1,0 +1,44 @@
+character_id: luo_zhi
+
+baseline:
+  valence: 0.12      # 底色微微偏负——不是不好，是有重量
+  arousal: 0.28      # 安静，向内
+  pressure: 0.35     # 压着的东西不少，但她按得住
+
+rhythm:
+  depth: deep_and_slow
+  period_scale: 1.50    # 她的情绪变化比别人慢，但更持久
+  trough_deepen_trait: longing_suppression
+  peak_flatten_trait: emotional_containment
+
+flashback_triggers:
+  - 盛淮南
+  - 他
+  - 那年
+  - 图书馆
+  - 说出口
+  - 喜欢
+  - 一直
+  - 知道吗
+  - 橘
+  - 淮南
+
+social_modifiers:
+  盛淮南:
+    valence_volatility: 0.20
+    arousal_delta: 0.12
+    pressure_delta: 0.15
+  alone:
+    trough_deepen: 0.25
+    flashback_boost: 0.30
+  late_night:
+    honesty_leak_probability: 0.45
+
+writeback:
+  valence_low: -0.50
+  valence_low_minutes: 25
+  arousal_high: 0.72
+  arousal_high_minutes: 10
+  pressure_high: 0.78
+  pressure_high_minutes: 20
+  auto_node_max_delta: 0.04

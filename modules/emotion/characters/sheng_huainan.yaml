@@ -1,0 +1,42 @@
+character_id: sheng_huainan
+
+baseline:
+  valence: 0.45      # 表面更高，底层要低一些
+  arousal: 0.52      # 社交时活跃，独处时降下来
+  pressure: 0.28
+
+rhythm:
+  depth: asymmetric
+  period_scale: 0.95
+  surface_valence_bonus: 0.15   # 他呈现的比实际高
+  alone_correction: -0.12       # 独处时回到真实值
+
+flashback_triggers:
+  - 洛枳
+  - 她
+  - 一直都知道
+  - 那个位置
+  - 说出来
+  - 等
+  - 橘
+  - 枳
+
+social_modifiers:
+  洛枳:
+    arousal_delta: 0.15
+    performed_ease_delta: -0.10   # 她在的时候他没那么需要表演
+    attention_focus: 0.90
+  group_setting:
+    social_brightness_boost: 0.12
+  alone:
+    valence_delta: -0.10
+    honest_state: true
+
+writeback:
+  valence_low: -0.42
+  valence_low_minutes: 18
+  arousal_high: 0.82
+  arousal_high_minutes: 12
+  pressure_high: 0.70
+  pressure_high_minutes: 15
+  auto_node_max_delta: 0.04
