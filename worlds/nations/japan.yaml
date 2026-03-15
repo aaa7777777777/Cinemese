@@ -1,0 +1,75 @@
+nation: japan
+label: 日本
+language: ja
+currency: 日元
+
+decades:
+  1980s:
+    era_label: 泡沫经济顶峰
+    economic_trend: >
+      土地和股票价格飙升。公司终身雇佣制是现实。
+      消费主义全面开花——设计、时尚、夜生活。
+      东京是世界最贵城市之一。
+    cultural_trend: >
+      随身听改变了个人与音乐的关系。
+      泡沫的轻浮与享乐。漫画和动画正在成为全球现象。
+    major_events:
+      - 1985 广场协议，日元急升
+      - 1989 昭和天皇去世，平成开始
+    background_noise: >
+      霓虹灯和夜生活。外国文化是时尚但外国人是异类。
+      泡沫正在膨胀，但没有人感觉到。
+
+  1990s:
+    era_label: 失落的十年
+    economic_trend: >
+      泡沫破裂。地价暴跌，银行坏账堆积。
+      通缩和停滞开始。终身雇佣制开始松动。
+      自杀率上升。
+    cultural_trend: >
+      宅文化兴起，社会退缩情绪弥漫。
+      J-Pop全盛期。阪神大地震重塑社会凝聚力。
+    major_events:
+      - 1995 阪神大地震，东京地铁沙林毒气事件
+      - 1997 山一证券倒闭，金融危机
+    background_noise: >
+      失落感和对未来的低预期开始内化为正常。
+      コンビニ是新的社会基础设施。
+
+  2000s:
+    era_label: 结构改革与韩流
+    economic_trend: >
+      小泉改革，国企私有化，劳动市场弹性化。
+      非正规就业扩大，贫富差距拉开。
+      "失去的十年"延续为"失去的二十年"。
+    cultural_trend: >
+      韩流进入。手机小说兴起。电车男现象。
+      少子化和孤独死开始进入公众话语。
+    major_events:
+      - 2001 小泉纯一郎上台
+      - 2002-03 日韩世界杯
+    background_noise: ""
+
+  2010s:
+    era_label: 安倍经济学与老龄化
+    economic_trend: >
+      安倍三箭：货币宽松、财政刺激、结构改革。
+      劳动力短缺，女性和外国人被推入劳动市场。
+      中国游客涌入，出口经济。
+    cultural_trend: >
+      可爱文化全球扩散。孤独和社会退缩研究增多。
+      网络右翼兴起，中韩关系影响文化氛围。
+    major_events:
+      - 2011 东日本大地震，福岛核事故
+      - 2013 东京获得2020奥运会主办权
+    background_noise: ""
+
+  2020s:
+    era_label: 疫情、奥运与后安倍
+    economic_trend: >
+      疫情冲击观光和服务业。日元大幅贬值。
+    cultural_trend: ""
+    major_events:
+      - 2021 延期举办的东京奥运会
+      - 2022 安倍晋三遇刺
+    background_noise: ""

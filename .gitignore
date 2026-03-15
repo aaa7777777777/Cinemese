@@ -16,3 +16,4 @@ Thumbs.db
 .vscode/
 .idea/
 network/threads/
+worlds/track_status.yaml

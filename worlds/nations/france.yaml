@@ -1,0 +1,58 @@
+nation: france
+label: 法国
+language: fr
+currency: 法郎/欧元
+
+decades:
+  1980s:
+    era_label: 密特朗与社会主义实验
+    economic_trend: >
+      密特朗执政，国企化实验很快被迫逆转。
+      通货膨胀，失业率上升。欧洲一体化加速。
+    cultural_trend: >
+      哲学和理论的黄金期余波（德里达、福柯晚期）。
+      Minitel，法国版互联网先驱。
+    major_events:
+      - 1981 密特朗当选，左派首次执政
+      - 1986 左右共治
+    background_noise: ""
+
+  1990s:
+    era_label: 欧元区与移民议题
+    economic_trend: >
+      欧盟深化，马斯特里赫特条约。欧元准备期。
+      失业率持续偏高，尤其青年群体。
+    cultural_trend: >
+      世界杯1998，法国多元文化的顶峰时刻。
+      rave文化，Daft Punk，法式电子乐。
+    major_events:
+      - 1992 马斯特里赫特条约
+      - 1998 法国世界杯夺冠
+    background_noise: ""
+
+  2000s:
+    era_label: ""
+    economic_trend: ""
+    cultural_trend: ""
+    major_events: []
+    background_noise: ""
+
+  2010s:
+    era_label: 恐袭阴影与黄背心
+    economic_trend: >
+      欧债危机余波，紧缩与改革争议。
+      马克龙上台，第五共和改革。
+    cultural_trend: >
+      多次恐袭事件（夏尔利周刊，巴塔克兰）重塑社会氛围。
+      黄背心运动——城乡经济鸿沟的爆发。
+    major_events:
+      - 2015 巴黎恐袭
+      - 2018-19 黄背心运动
+    background_noise: ""
+
+  2020s:
+    era_label: ""
+    economic_trend: ""
+    cultural_trend: ""
+    major_events: []
+    background_noise: ""

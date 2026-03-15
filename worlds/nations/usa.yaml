@@ -1,0 +1,83 @@
+nation: usa
+label: 美国
+language: en
+currency: 美元
+
+decades:
+  1980s:
+    era_label: 里根时代与冷战末期
+    economic_trend: >
+      里根经济学：减税、放松管制。贫富差距扩大。
+      金融业崛起，华尔街文化兴起。
+      中产郊区生活是成功象征。
+    cultural_trend: >
+      MTV塑造一代人审美。消费主义全面开花。
+      冷战意识形态渗透日常。电视是家庭中心。
+    major_events:
+      - 1981 里根就任，经济政策转向
+      - 1986 挑战者号事故
+      - 1989 柏林墙倒塌
+    background_noise: >
+      核战争的恐惧和繁荣的自信同时存在。
+      可口可乐、麦当劳是美国梦的符号。
+
+  1990s:
+    era_label: 单极繁荣
+    economic_trend: >
+      冷战结束，经济长期扩张。互联网泡沫开始膨胀。
+      全球化推进，制造业外移。
+      中产阶级是主流叙事，信用卡消费成熟。
+    cultural_trend: >
+      Friends、Seinfeld定义纽约中产文化。
+      嘻哈进入主流。Grunge与流行并存。
+      政治正确话语开始进入大学校园。
+    major_events:
+      - 1991 海湾战争
+      - 1995 OKC爆炸，互联网商业化
+      - 1998 克林顿丑闻
+      - 1999 科伦拜校园枪击
+    background_noise: >
+      拨号上网的声音。大房子大草坪是成功。
+      邻居认识但不亲近。
+
+  2000s:
+    era_label: 恐怖主义阴影与金融危机
+    economic_trend: >
+      9/11后安全开支激增。房地产泡沫膨胀。
+      2008金融危机重创中产，部分财富永久转移。
+    cultural_trend: >
+      反恐战争主导公众叙事。真人秀兴起。
+      社交媒体萌芽（MySpace，早期Facebook）。
+      爱国主义与反战情绪并存。
+    major_events:
+      - 2001 9/11
+      - 2003 伊拉克战争
+      - 2008 金融危机，奥巴马当选
+    background_noise: >
+      机场安检成为日常。"轴心国"是新词汇。
+
+  2010s:
+    era_label: 极化与身份政治
+    economic_trend: >
+      缓慢复苏，但财富向顶层集中加速。零工经济兴起。
+      科技巨头垄断，硅谷叙事主导。
+    cultural_trend: >
+      社交媒体重塑公共话语。BLM、MeToo浪潮。
+      身份政治成为主战场。流媒体取代传统电视。
+    major_events:
+      - 2012 桑迪胡克枪击
+      - 2016 特朗普当选
+      - 2017 MeToo运动
+    background_noise: >
+      Twitter是新的公共广场。部落化加速。
+
+  2020s:
+    era_label: 疫情与分裂
+    economic_trend: >
+      疫情催生通胀。供应链危机。远程工作重塑劳动市场。
+    cultural_trend: >
+      极化加深。Gen Z进入职场，带来新的价值冲突。
+    major_events:
+      - 2020 疫情、乔治·弗洛伊德事件、大选
+      - 2021 国会山事件
+    background_noise: ""

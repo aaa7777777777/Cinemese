@@ -1,0 +1,84 @@
+nation: uk
+label: 英国
+language: en
+currency: 英镑
+
+decades:
+  1940s:
+    era_label: 战时与战后重建
+    economic_trend: >
+      配给制，战争经济。所有资源服务于战争。
+      女性大规模进入工厂，经济角色永久改变。
+      战后福利国家的建立开始。
+    cultural_trend: >
+      共同危险创造陌生人间的临时亲密。
+      BBC是唯一可靠的信息来源。
+      幽默是英国人应对一切的工具。
+    major_events:
+      - 1940 不列颠之战
+      - 1944 诺曼底登陆
+      - 1945 工党大选获胜，福利国家奠基
+    background_noise: >
+      防空洞，灯火管制，等待信件。
+      每天的新闻可能改变一切。失去是普通经验。
+
+  1960s:
+    era_label: 摇摆伦敦与文化革命
+    economic_trend: >
+      战后繁荣延续，充分就业。消费社会初步形成。
+    cultural_trend: >
+      披头士改变了世界。摇摆伦敦，青年文化爆发。
+      反越战、性解放、嬉皮士。
+    major_events:
+      - 1963 披头士全球走红
+      - 1966 英格兰世界杯夺冠
+    background_noise: ""
+
+  1980s:
+    era_label: 撒切尔主义
+    economic_trend: >
+      去工业化，矿工罢工，国企私有化。
+      金融业中心化，"大爆炸"改革。
+      贫富差距急剧扩大，北方工业区凋零。
+    cultural_trend: >
+      朋克余波，新浪潮，后朋克。
+      MTV英国版本。阶级冲突进入流行文化。
+    major_events:
+      - 1982 马岛战争
+      - 1984-85 矿工大罢工
+      - 1987 黑色星期一股灾
+    background_noise: >
+      撒切尔是爱她或恨她的符号。没有中间立场。
+
+  1990s:
+    era_label: 酷不列颠
+    economic_trend: >
+      经济复苏，布莱尔第三条道路。
+      创意产业兴起，服务业主导。
+    cultural_trend: >
+      Britpop（绿洲vs模糊），超级名模，酷不列颠。
+      戴安娜之死是一个集体情感事件。
+    major_events:
+      - 1997 工党赢得大选，布莱尔时代
+      - 1997 戴安娜王妃去世
+      - 1998 北爱和平协议
+    background_noise: ""
+
+  2010s:
+    era_label: 紧缩与脱欧
+    economic_trend: >
+      金融危机后紧缩政策，公共服务削减。
+      零工经济扩张，住房危机。
+    cultural_trend: >
+      脱欧公投撕裂社会。身份认同政治浮出水面。
+    major_events:
+      - 2016 脱欧公投
+      - 2019 约翰逊政府
+    background_noise: ""
+
+  2020s:
+    era_label: ""
+    economic_trend: ""
+    cultural_trend: ""
+    major_events: []
+    background_noise: ""

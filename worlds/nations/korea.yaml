@@ -1,0 +1,72 @@
+nation: korea
+label: 韩国
+language: ko
+currency: 韩元
+
+decades:
+  1980s:
+    era_label: 军威体制末期与民主化
+    economic_trend: >
+      汉江奇迹延续，重工业和电子业崛起。
+      三星、现代、LG成为国家象征。
+      劳动者权利运动开始。
+    cultural_trend: >
+      政治压抑下的文化活力。民主化运动是这十年的底色。
+      露天演唱会和大众娱乐初步兴起。
+    major_events:
+      - 1980 光州事件
+      - 1987 民主化宣言
+      - 1988 首尔奥运会
+    background_noise: >
+      军事独裁的阴影和经济奇迹的自豪同时存在。
+
+  1990s:
+    era_label: 民主化与IMF危机
+    economic_trend: >
+      民主化后的扩张，消费和信贷过度。
+      1997年IMF危机——大规模裁员，中产瞬间归零。
+      危机重塑了韩国人对稳定的理解。
+    cultural_trend: >
+      H.O.T开启了K-pop工厂模式。PC房兴起，游戏文化。
+      危机后的创伤影响了整整一代人的价值观。
+    major_events:
+      - 1997 亚洲金融危机，韩国向IMF求援
+      - 1998 大宇集团解体
+    background_noise: >
+      金融危机后的社会：离婚率上升，自杀率上升，
+      奉献给公司的一代人突然发现公司并不奉献给你。
+
+  2000s:
+    era_label: 韩流元年与数字化
+    economic_trend: >
+      危机后的韩国转向文化出口和高科技。
+      宽带网络普及率全球最高。
+      教育焦虑和学历军备竞赛加剧。
+    cultural_trend: >
+      韩剧输出东南亚和中国。BoA，东方神起。
+      整容和外貌标准成为社会议题。
+    major_events:
+      - 2002 韩日世界杯，韩国四强
+      - 2003 大邱地铁纵火事件
+    background_noise: ""
+
+  2010s:
+    era_label: 朴槿惠与촛불혁명
+    economic_trend: >
+      青年失业率上升，"七抛一代"话语扩散。
+      贫富差距拉大，财阀体制争议。
+    cultural_trend: >
+      防弹少年团走向全球。BTS之前的K-pop工业化。
+      N号房、#MeToo，女性主义意识急速上升。
+      "地狱朝鲜"的自嘲是代际情绪。
+    major_events:
+      - 2014 世越号沉船事故
+      - 2016 朴槿惠弹劾，烛光革命
+    background_noise: ""
+
+  2020s:
+    era_label: ""
+    economic_trend: ""
+    cultural_trend: ""
+    major_events: []
+    background_noise: ""
