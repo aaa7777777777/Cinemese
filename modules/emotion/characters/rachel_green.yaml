@@ -1,0 +1,41 @@
+character_id: rachel_green
+
+baseline:
+  valence: 0.38
+  arousal: 0.44
+  pressure: 0.22
+
+rhythm:
+  depth: evolving
+  period_scale: 1.00
+  old_self_regression_risk: 0.20
+
+flashback_triggers:
+  - Barry
+  - Long Island
+  - daddy
+  - wedding
+  - who I am
+  - before
+  - career
+  - independent
+  - Ross
+
+social_modifiers:
+  Ross:
+    valence_volatility: 0.20
+    arousal_delta: 0.12
+  work:
+    valence_delta: 0.15
+    arousal_delta: 0.10
+  old_friends:
+    regression_risk: 0.15
+
+writeback:
+  valence_low: -0.45
+  valence_low_minutes: 18
+  arousal_high: 0.80
+  arousal_high_minutes: 12
+  pressure_high: 0.68
+  pressure_high_minutes: 14
+  auto_node_max_delta: 0.05

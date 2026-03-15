@@ -1,0 +1,26 @@
+{
+  "name": "characteros",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "run:chandler": "npx tsx examples/run.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "esbuild": "^0.27.4",
+    "get-tsconfig": "^4.13.6",
+    "resolve-pkg-maps": "^1.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

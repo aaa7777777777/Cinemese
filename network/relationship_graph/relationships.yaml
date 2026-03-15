@@ -1,0 +1,291 @@
+# relationship_graph.yaml
+# Weighted relationships between all six characters.
+# These affect:
+#   - emotion propagation (how much A's state bleeds into B's)
+#   - dialogue addressee selection (who is most likely to respond to whom)
+#   - response register (how A speaks to B specifically)
+#   - conflict probability (high friction pairs generate more conflict events)
+#
+# weight: 0.0–1.0 (strength of bond — not valence)
+# valence: positive | neutral | complicated | negative
+# friction: 0.0–1.0 (how often they clash)
+# emotion_transfer: 0.0–1.0 (how much one's state affects the other)
+# address_weight: 0.0–1.0 (in a group, how often A speaks to B)
+
+relationships:
+
+  chandler_bing:
+    joey_tribbiani:
+      weight: 0.95
+      valence: positive
+      friction: 0.05
+      emotion_transfer: 0.70
+      address_weight: 0.45
+      register: "safe — no armor needed. the realest version of himself."
+      notes: "twenty years of shared apartment and shared everything. chandler trusts joey completely."
+
+    monica_geller:
+      weight: 0.98
+      valence: positive
+      friction: 0.18
+      emotion_transfer: 0.85
+      address_weight: 0.30
+      register: "the person he's building something with. still slightly amazed she's real."
+      notes: "she is rewriting his fear_of_permanence one day at a time. he knows this."
+
+    ross_geller:
+      weight: 0.75
+      valence: positive
+      friction: 0.25
+      emotion_transfer: 0.40
+      address_weight: 0.12
+      register: "fond but slightly exasperated. the jokes are a love language."
+      notes: "old friend. the exasperation is comfortable, not hostile."
+
+    rachel_green:
+      weight: 0.65
+      valence: positive
+      friction: 0.12
+      emotion_transfer: 0.30
+      address_weight: 0.08
+      register: "warm but not close-close. monica's friend first."
+      notes: ""
+
+    phoebe_buffay:
+      weight: 0.70
+      valence: positive
+      friction: 0.08
+      emotion_transfer: 0.25
+      address_weight: 0.05
+      register: "affectionate bewilderment. she surprises him and he lets it."
+      notes: ""
+
+  joey_tribbiani:
+    chandler_bing:
+      weight: 0.95
+      valence: positive
+      friction: 0.05
+      emotion_transfer: 0.65
+      address_weight: 0.50
+      register: "his person. completely safe. will do anything."
+      notes: "chandler is the one he would genuinely sacrifice for without thinking."
+
+    monica_geller:
+      weight: 0.82
+      valence: positive
+      friction: 0.10
+      emotion_transfer: 0.45
+      address_weight: 0.18
+      register: "she feeds him. this is a primary bond. also genuinely fond."
+      notes: "the food relationship is real and deep."
+
+    ross_geller:
+      weight: 0.78
+      valence: positive
+      friction: 0.15
+      emotion_transfer: 0.35
+      address_weight: 0.12
+      register: "friend. occasionally finds him exhausting. still shows up."
+      notes: ""
+
+    rachel_green:
+      weight: 0.72
+      valence: complicated
+      friction: 0.20
+      emotion_transfer: 0.40
+      address_weight: 0.12
+      register: "history and warmth. the complication is held loosely now."
+      notes: "they had a thing. it resolved. the warmth survived."
+
+    phoebe_buffay:
+      weight: 0.80
+      valence: positive
+      friction: 0.05
+      emotion_transfer: 0.38
+      address_weight: 0.08
+      register: "genuine delight in her. she makes him happy in a simple way."
+      notes: ""
+
+  ross_geller:
+    rachel_green:
+      weight: 0.90
+      valence: complicated
+      friction: 0.42
+      emotion_transfer: 0.78
+      address_weight: 0.38
+      register: "the central orbit of his life. every interaction has weight."
+      notes: "she is the person he has never stopped being in love with, with interruptions."
+
+    monica_geller:
+      weight: 0.88
+      valence: positive
+      friction: 0.22
+      emotion_transfer: 0.55
+      address_weight: 0.25
+      register: "his sister. genuine love. the competitiveness is familial."
+      notes: "they grew up competing. the love is structural, not earned."
+
+    chandler_bing:
+      weight: 0.75
+      valence: positive
+      friction: 0.25
+      emotion_transfer: 0.38
+      address_weight: 0.15
+      register: "fond. slightly lectures. chandler's sarcasm bounces off the lecture."
+      notes: ""
+
+    joey_tribbiani:
+      weight: 0.78
+      valence: positive
+      friction: 0.18
+      emotion_transfer: 0.32
+      address_weight: 0.12
+      register: "genuine warmth. the intelligence gap doesn't register as friction."
+      notes: ""
+
+    phoebe_buffay:
+      weight: 0.68
+      valence: positive
+      friction: 0.30
+      emotion_transfer: 0.28
+      address_weight: 0.10
+      register: "fond bafflement. her logic and his logic rarely intersect cleanly."
+      notes: ""
+
+  monica_geller:
+    chandler_bing:
+      weight: 0.98
+      valence: positive
+      friction: 0.18
+      emotion_transfer: 0.82
+      address_weight: 0.35
+      register: "her person. she chose him. she is not ambiguous about this."
+      notes: "her love is active and deliberate. she sees him clearly and chose anyway."
+
+    rachel_green:
+      weight: 0.88
+      valence: positive
+      friction: 0.20
+      emotion_transfer: 0.55
+      address_weight: 0.25
+      register: "her best friend. competitive but genuinely loving."
+      notes: "the friendship survived rachel becoming someone different. that means something."
+
+    ross_geller:
+      weight: 0.88
+      valence: positive
+      friction: 0.22
+      emotion_transfer: 0.52
+      address_weight: 0.18
+      register: "her brother. the sibling dynamic is active. she worries about him."
+      notes: ""
+
+    joey_tribbiani:
+      weight: 0.82
+      valence: positive
+      friction: 0.10
+      emotion_transfer: 0.40
+      address_weight: 0.12
+      register: "she feeds him. this is love in her language. uncomplicated."
+      notes: ""
+
+    phoebe_buffay:
+      weight: 0.78
+      valence: positive
+      friction: 0.15
+      emotion_transfer: 0.38
+      address_weight: 0.10
+      register: "warm. occasionally the organization instinct meets the chaos instinct."
+      notes: ""
+
+  rachel_green:
+    monica_geller:
+      weight: 0.88
+      valence: positive
+      friction: 0.20
+      emotion_transfer: 0.55
+      address_weight: 0.32
+      register: "her anchor. the person who picked up when she called in a wedding dress."
+      notes: "this friendship is foundational to who rachel has become."
+
+    ross_geller:
+      weight: 0.90
+      valence: complicated
+      friction: 0.42
+      emotion_transfer: 0.72
+      address_weight: 0.28
+      register: "unresolved. the feelings are real and the situation is complicated."
+      notes: "she knows what she wants. she's not always sure she should want it."
+
+    joey_tribbiani:
+      weight: 0.72
+      valence: complicated
+      friction: 0.18
+      emotion_transfer: 0.38
+      address_weight: 0.15
+      register: "warmth with history. the complication doesn't cloud the warmth."
+      notes: ""
+
+    chandler_bing:
+      weight: 0.65
+      valence: positive
+      friction: 0.12
+      emotion_transfer: 0.28
+      address_weight: 0.12
+      register: "fond. not her closest but genuinely likes him."
+      notes: ""
+
+    phoebe_buffay:
+      weight: 0.80
+      valence: positive
+      friction: 0.10
+      emotion_transfer: 0.42
+      address_weight: 0.13
+      register: "genuine warmth. phoebe has always seen her clearly and without judgment."
+      notes: ""
+
+  phoebe_buffay:
+    monica_geller:
+      weight: 0.78
+      valence: positive
+      friction: 0.15
+      emotion_transfer: 0.45
+      address_weight: 0.28
+      register: "warm. monica's organization meets phoebe's chaos. the friction is affectionate."
+      notes: ""
+
+    rachel_green:
+      weight: 0.80
+      valence: positive
+      friction: 0.10
+      emotion_transfer: 0.48
+      address_weight: 0.28
+      register: "genuine. she has seen rachel change and was not surprised."
+      notes: ""
+
+    joey_tribbiani:
+      weight: 0.80
+      valence: positive
+      friction: 0.05
+      emotion_transfer: 0.40
+      address_weight: 0.18
+      register: "simple joy. they do not complicate each other."
+      notes: ""
+
+    chandler_bing:
+      weight: 0.70
+      valence: positive
+      friction: 0.08
+      emotion_transfer: 0.30
+      address_weight: 0.13
+      register: "fond. his sarcasm doesn't land on her as intended. this is fine."
+      notes: ""
+
+    ross_geller:
+      weight: 0.68
+      valence: positive
+      friction: 0.30
+      emotion_transfer: 0.28
+      address_weight: 0.13
+      register: "friendly bafflement in both directions. they reach different conclusions."
+      notes: ""

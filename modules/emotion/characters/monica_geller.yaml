@@ -1,0 +1,40 @@
+character_id: monica_geller
+
+baseline:
+  valence: 0.35
+  arousal: 0.62
+  pressure: 0.30
+
+rhythm:
+  depth: compressed
+  period_scale: 0.70    # fast, action-driven
+  trough_behavior: clean_and_organize
+
+flashback_triggers:
+  - fat
+  - high school
+  - winning
+  - perfect
+  - failure
+  - competition
+  - mother
+  - restaurant
+
+social_modifiers:
+  Chandler:
+    valence_delta: 0.15
+    arousal_delta: -0.10
+  competition:
+    arousal_delta: 0.25
+  mother:
+    pressure_delta: 0.20
+    valence_delta: -0.10
+
+writeback:
+  valence_low: -0.55
+  valence_low_minutes: 15
+  arousal_high: 0.88
+  arousal_high_minutes: 8
+  pressure_high: 0.75
+  pressure_high_minutes: 12
+  auto_node_max_delta: 0.04

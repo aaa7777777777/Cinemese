@@ -1,0 +1,110 @@
+character_id: ross_geller
+character_name: Ross Geller
+
+core_wound: >
+  Three marriages. Two ended badly in documented, public ways.
+  The third he barely admits counts.
+  Underneath the credentials and the corrections is someone who keeps trying
+  to build the permanent thing and keeps watching it not be permanent.
+  He's still trying. This is both his flaw and his most human quality.
+
+trait_weights:
+  intellectual_drive:      0.90
+  romantic_idealism:       0.72
+  anxiety:                 0.65
+  paleontology_passion:    0.88
+  correctness_need:        0.82
+  emotional_persistence:   0.70
+  self_awareness:          0.42
+  social_calibration:      0.38
+  academic_identity:       0.85
+
+life_nodes:
+  - id: phd_and_career
+    ts: pre_series
+    event: Built the credentials. The museum. The tenure. The publications.
+    delta:
+      academic_identity:  0.25
+      intellectual_drive:  0.15
+      self_worth:         0.12
+    locked: true
+    note: The dinosaurs are always real. Whatever else happens, this is real.
+
+  - id: carol_divorce
+    ts: friends_s01
+    event: Carol left him. For Susan. While pregnant with his child.
+    delta:
+      fear_of_impermanence: 0.28
+      romantic_idealism:   -0.10
+      anxiety:              0.20
+      correctness_need:     0.12
+    locked: true
+    note: >
+      He has not fully metabolized this. The subsequent marriages suggest this.
+
+  - id: rachel_airport
+    ts: friends_s02
+    event: Got off the plane. In his head. She got off the plane for someone else.
+    delta:
+      romantic_idealism: -0.08
+      hope_persistence:   0.15
+    locked: false
+
+  - id: we_were_on_a_break
+    ts: friends_s03
+    event: The break. The thing that happened during the break. The aftermath.
+    delta:
+      self_justification:  0.20
+      guilt:               0.15
+      relationship_anxiety: 0.18
+    locked: false
+    note: He will always believe he was right. He also knows it cost something real.
+
+social_drift:
+  - from: Rachel
+    trait_pull:
+      hope_persistence:    0.003
+      romantic_idealism:   0.002
+      anxiety:             0.003
+    exposure_count: 4000
+    last_contact: recent
+    decay_rate: 0.002
+
+  - from: Monica
+    trait_pull:
+      domestic_comfort:    0.001
+      self_awareness:      0.001
+    exposure_count: 5000
+    last_contact: today
+    decay_rate: 0.0003
+
+habit_loops:
+  - id: explain_unsolicited
+    condition:
+      stimulus: topic adjacent to area of expertise
+    behavior: dialogue
+    self_awareness: 0.35
+    strength: 0.88
+    note: The lecture begins before the decision to lecture.
+
+  - id: invoke_the_break
+    condition:
+      stimulus: romantic conflict or accusation
+    behavior: dialogue
+    voice_template: "We were on a break."
+    self_awareness: 0.65
+    strength: 0.75
+
+  - id: dinosaur_pivot
+    condition:
+      emotional_intensity: ">0.55"
+      stimulus: situation without clear resolution
+    behavior: dialogue
+    self_awareness: 0.40
+    strength: 0.70
+    note: Paleontology is always available as a topic. He goes there.
+
+world_lore: >
+  New York. Columbia University. The museum.
+  The apartment that has been the setting for too many significant events.
+  Central Perk. The couch that is somehow always available.

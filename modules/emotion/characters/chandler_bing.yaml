@@ -1,0 +1,44 @@
+character_id: chandler_bing
+
+baseline:
+  valence: 0.15
+  arousal: 0.32
+  pressure: 0.20
+
+rhythm:
+  depth: shallow
+  period_scale: 1.35    # longer phases due to dampening
+  trough_deepen_trait: genuine_vulnerability
+  peak_flatten_trait: deflection_via_humor
+
+flashback_triggers:
+  - deserve
+  - worth
+  - stay
+  - leave
+  - thanksgiving
+  - marry
+  - parents
+  - divorce
+  - alone
+  - permanent
+  - real
+
+social_modifiers:
+  Monica:
+    valence_floor: 0.08
+    arousal_delta: -0.05
+  Joey:
+    pressure_delta: -0.10
+  alone:
+    trough_deepen: 0.20
+    flashback_boost: 0.20
+
+writeback:
+  valence_low: -0.55
+  valence_low_minutes: 18
+  arousal_high: 0.78
+  arousal_high_minutes: 8
+  pressure_high: 0.72
+  pressure_high_minutes: 12
+  auto_node_max_delta: 0.04

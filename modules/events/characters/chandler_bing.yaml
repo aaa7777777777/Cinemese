@@ -1,0 +1,40 @@
+weights:
+  quiet_moment: 0.38
+  interaction: 0.22
+  discovery: 0.18
+  conflict: 0.1
+  internal_shift: 0.12
+intensity_range:
+- 0.1
+- 0.55
+templates:
+  quiet_moment:
+  - it's been quiet for a few hours. the kind of quiet that has a texture.
+  - the TV is on. he's not watching it. this is fine.
+  - he's been on the couch longer than he planned. the couch doesn't judge.
+  - the apartment is very clean. Monica cleaned it. this means something.
+  - he made coffee. it's gone cold. he noticed but didn't do anything about it.
+  interaction:
+  - Joey said something honest without meaning to.
+  - Monica looked at him for a second longer than usual. she didn't say anything.
+  - someone asked him what he actually wanted. he answered something else.
+  - he said something and it landed wrong. he replayed it four times.
+  - ran into someone from before. it went okay. okay is a lot.
+  discovery:
+  - found a photo from a few years ago. took a minute to decide what to do with it.
+  - realized he's been telling the same joke for six years. still works. complicated.
+  - something that used to be hard was easy today. he didn't trust it.
+  - found out something about his parents. added to the existing collection.
+  - read something that was exactly the thing he'd been thinking. unsettling.
+  conflict:
+  - a choice surfaced that he'd been successfully not making.
+  - said the wrong thing. knew it while saying it. kept going.
+  - something Monica wanted and something he wanted were not the same thing.
+  - the joke didn't land. the room went quiet. he made another joke.
+  - someone needed him to be more than he thought he could be. he showed up anyway.
+  internal_shift:
+  - woke up and the fear was quieter than usual. didn't trust it.
+  - thought about Thanksgiving. didn't spiral. this is new.
+  - something that used to feel impossible felt difficult. difficult is progress.
+  - missed Monica while she was standing right there. this is the good version.
+  - caught himself meaning something he said. that's been happening more.

@@ -1,0 +1,45 @@
+weights:
+  quiet_moment: 0.2
+  interaction: 0.28
+  discovery: 0.18
+  conflict: 0.22
+  internal_shift: 0.12
+intensity_range:
+- 0.12
+- 0.65
+templates:
+  quiet_moment:
+  - reorganized the spice rack. this was necessary. she has a system.
+  - the kitchen is clean. she's in it anyway. this is where she thinks.
+  - cooked something complicated for no occasion. it was for the occasion of Tuesday.
+  - sat down without a task for eleven minutes. got back up.
+  - the apartment is exactly as it should be. she checked.
+  interaction:
+  - Chandler said something sweet in a way that was embarrassing for him. she let
+    it land.
+  - beat Joey at something. the something doesn't matter. the beating matters.
+  - her mother said something. she handled it. the kitchen got very clean afterward.
+  - someone complimented the food. she accepted it without correcting them. progress.
+  - had a real conversation with Rachel that wasn't about any of their usual things.
+  discovery:
+  - a new technique that makes the sauce better. tested it three times. confirmed.
+  - realized she's been the one holding something together. not resentfully.
+  - found a recipe from her grandmother. made it. it was the same. this mattered.
+  - noticed Chandler looking at her like he still can't believe it. filed this.
+  - understood something about the fat-kid years. not painful. just clear.
+  conflict:
+  - something was not done correctly. she fixed it. this created friction. worth it.
+  - lost a competition. replayed every decision. identified the error. would not make
+    again.
+  - something Chandler said was small and also wasn't. they talked until resolved.
+  - her mother compared her to someone else. she responded with cooking. then words.
+  - had to let something be imperfect. this took longer than anyone will know.
+  internal_shift:
+  - woke up and didn't immediately have a plan. lay there. it was okay.
+  - thought about high school without it meaning anything bad about right now.
+  - let Chandler fix something. watched him do it slightly wrong. said nothing. this
+    was love.
+  - realized the restaurant is actually good. not perfect. actually good. this is
+    different.
+  - felt genuinely content. confirmed it wasn't satisfaction-disguised-as-control.
+    it wasn't.

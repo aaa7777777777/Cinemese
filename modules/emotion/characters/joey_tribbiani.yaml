@@ -1,0 +1,40 @@
+character_id: joey_tribbiani
+
+baseline:
+  valence: 0.62
+  arousal: 0.48
+  pressure: 0.12
+
+rhythm:
+  depth: wide
+  period_scale: 0.75    # fast cycling, fast recovery
+  trough_deepen_trait: null
+  peak_flatten_trait: null
+
+flashback_triggers:
+  - family
+  - Naples
+  - audition
+  - rejected
+  - alone
+  - got the part
+  - mom
+  - sandwich
+
+social_modifiers:
+  Chandler:
+    arousal_delta: 0.08
+    pressure_delta: -0.10
+  audition:
+    arousal_delta: 0.20
+  food:
+    valence_delta: 0.15
+
+writeback:
+  valence_low: -0.30
+  valence_low_minutes: 12
+  arousal_high: 0.85
+  arousal_high_minutes: 10
+  pressure_high: 0.60
+  pressure_high_minutes: 10
+  auto_node_max_delta: 0.03

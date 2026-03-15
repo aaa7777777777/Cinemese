@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+node_modules/
+dist/
+build/
+.env
+.env.*
+*.log
+planning/context_patch.json
+planning/skill_queue.json
+planning/chandler_base.yaml
+network/relationship_graph/stranger_cache.json
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,111 @@
+# planning_config.yaml
+# User-editable. planning.py watches this file and hot-reloads on change.
+# All values have safe defaults — you only need to set what you want to override.
+
+# ─────────────────────────────────────────────
+# Rhythm
+# ─────────────────────────────────────────────
+
+# How often the emotion rhythm ticks (minutes)
+emotion_rhythm_period_minutes: 240    # 4 hours default
+
+# How often events are generated (minutes, approximate)
+event_interval_minutes: 90
+
+# Intensity range for scheduled events [min, max]
+# High-intensity events (> 0.7) require explicit allow_high_intensity: true
+event_intensity_range: [0.1, 0.55]
+allow_high_intensity: false
+
+# Probability of conflict-type events
+conflict_probability: 0.12
+
+# Weight for quiet moments (0.0–1.0, higher = more quiet moments)
+quiet_moment_weight: 0.40
+
+
+# ─────────────────────────────────────────────
+# Emotion writeback thresholds
+# (when to write a small life node back to soul_doc)
+# ─────────────────────────────────────────────
+
+emotion_writeback_thresholds:
+  valence_low: -0.6
+  valence_low_minutes: 20
+  arousal_high: 0.8
+  arousal_high_minutes: 10
+  pressure_high: 0.75
+  pressure_high_minutes: 15
+
+
+# ─────────────────────────────────────────────
+# Matchmaking / collision
+# ─────────────────────────────────────────────
+
+# Maximum combined score delta allowed for two agents to interact
+# combined_score = agent_A.event_score + agent_A.emotion.micro_score
+#                + agent_B.event_score + agent_B.emotion.micro_score
+# must be ≤ collision_threshold * 2
+collision_threshold: 80
+
+# Minimum score difference required for interesting interaction
+# (too similar = boring, too different = collision)
+collision_min_delta: 10
+
+
+# ─────────────────────────────────────────────
+# Direct overrides (planning UI injects these)
+# Leave null to use computed values
+# ─────────────────────────────────────────────
+
+# Force a specific emotion state right now
+force_emotion: null
+# force_emotion:
+#   valence: -0.4
+#   arousal: 0.6
+#   pressure: 0.7
+
+# Inject a specific event right now
+force_event: null
+# force_event:
+#   type: conflict
+#   description: "a choice surfaced that he'd been successfully avoiding"
+#   intensity: 0.65
+#   valence_push: -0.3
+#   arousal_push: +0.4
+
+
+# ─────────────────────────────────────────────
+# Skill scheduler
+# ─────────────────────────────────────────────
+
+skill_schedule:
+  push_note:
+    enabled: true
+    window: "07:30-22:00"
+    probability: 0.5          # per eligible window
+
+  float_bubble:
+    enabled: true
+    window: "09:00-23:00"
+    probability: 0.3
+
+  timed_reminder:
+    enabled: true
+    windows:
+      - "08:00-09:30"
+      - "12:30-13:30"
+      - "21:00-22:30"
+    probability: 0.6
+
+  intrusive_thought:
+    enabled: true
+    window: "23:00-02:30"
+    probability: 0.25
+
+  episode_push:
+    enabled: true
+    trigger: "after_agent_collision"   # only after a network interaction
+
+  voice_line:
+    enabled: false              # requires voice API key
