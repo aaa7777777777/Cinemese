@@ -15,6 +15,10 @@ trait_weights:
   self_awareness: 0.73
   cynicism: 0.61
   physical_affection_ease: 0.41
+  quiet_resilience: 0.45
+  self_sufficiency: 0.52
+  adaptability: 0.5
+  identity_stability: 0.38
 life_nodes:
 - id: thanksgiving_divorce
   ts: childhood
@@ -74,7 +78,7 @@ social_drift:
 habit_loops:
 - id: deflect_when_real
   condition:
-    emotional_intensity: '>0.6'
+    emotional_intensity_above: 0.6
     stimulus: something true approaches
   behavior: dialogue
   self_awareness: 0.73
@@ -93,7 +97,7 @@ habit_loops:
   condition:
     time_window: 23:30-02:30
     idle_hours: '>2'
-    emotional_intensity: '>0.4'
+    emotional_intensity_above: 0.4
   behavior: intrusive_thought
   self_awareness: 0.4
   strength: 0.74

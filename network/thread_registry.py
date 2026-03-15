@@ -213,13 +213,28 @@ class ThreadRegistry:
         summary_b:       str,
         relationship_a_to_b: dict,
         relationship_b_to_a: dict,
+        agent_a_id:      Optional[str] = None,
+        agent_b_id:      Optional[str] = None,
     ) -> AgentThread:
         """
         Called by episode_runner after a session ends.
         Appends a compressed summary and updates relationship state.
+
+        summary_a and summary_b must correspond to agent_a_id and agent_b_id
+        as passed by the caller — this method re-maps them to the thread's
+        canonical agent_a/agent_b order so memory_fragment_for() stays correct.
+
+        If agent_a_id / agent_b_id are not supplied, summaries are assumed to
+        already be in canonical thread order.
         """
         thread.episode_count += 1
         thread.last_met_at    = time.strftime("%Y-%m-%dT%H:%M:%S")
+
+        # Re-map summaries to canonical thread order if caller specified IDs
+        if agent_a_id and agent_b_id and agent_a_id != thread.agent_a_id:
+            # caller's a is thread's b — swap
+            summary_a, summary_b = summary_b, summary_a
+            relationship_a_to_b, relationship_b_to_a = relationship_b_to_a, relationship_a_to_b
 
         ep = EpisodeSummary(
             episode_number  = thread.episode_count,
@@ -234,7 +249,6 @@ class ThreadRegistry:
         thread.episodes.append(ep)
 
         # Keep at most 20 episodes in the record
-        # Older ones are too far back to matter in prompts
         if len(thread.episodes) > 20:
             thread.episodes = thread.episodes[-20:]
 

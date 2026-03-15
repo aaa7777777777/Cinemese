@@ -8,6 +8,7 @@ fires skills, injects into dialogue context.
 from __future__ import annotations
 import os
 import sys
+import signal
 import time
 import json
 import threading
@@ -174,13 +175,52 @@ class Planning:
         self.context_patch_path = output_path / "context_patch.json"
 
     def start(self):
+        """
+        Start the planning loop. Blocks until stop() is called or SIGTERM/SIGINT received.
+        Pending soul_doc writebacks are flushed before exit.
+        """
+        self._stop_event = threading.Event()
+
+        def _handle_signal(signum, frame):
+            print(f"\n[planning] received signal {signum} — shutting down gracefully...")
+            self._stop_event.set()
+
+        signal.signal(signal.SIGTERM, _handle_signal)
+        signal.signal(signal.SIGINT,  _handle_signal)
+
         print(f"[planning] starting for {self.character_id}")
         try:
-            while True:
+            while not self._stop_event.is_set():
                 self._tick()
-                time.sleep(self.TICK_INTERVAL)
-        except KeyboardInterrupt:
-            print("[planning] stopped.")
+                # Sleep in small increments so signal fires promptly
+                for _ in range(self.TICK_INTERVAL):
+                    if self._stop_event.is_set():
+                        break
+                    time.sleep(1)
+        finally:
+            self._flush_pending_writebacks()
+            print("[planning] stopped cleanly.")
+
+    def stop(self):
+        """Signal the loop to stop (callable from another thread or test)."""
+        if hasattr(self, "_stop_event"):
+            self._stop_event.set()
+
+    def _flush_pending_writebacks(self):
+        """
+        Force-write any soul_doc nodes that are queued in the emotion engine
+        writeback timers. Called on shutdown so no data is lost.
+        """
+        try:
+            # Trigger a final writeback check at every active timer
+            now = time.time()
+            for key, start_ts in list(self.emotion_engine._writeback_timers.items()):
+                # Lower the timer threshold to 0 so they fire immediately
+                self.emotion_engine._writeback_timers[key] = now - 9999
+            self.emotion_engine._check_writebacks()
+            print(f"[planning] writeback flush complete.")
+        except Exception as e:
+            print(f"[planning] writeback flush error: {e}")
 
     def inject_event(self, event_dict: dict):
         """External call: agent collision, user dashboard, or network episode."""

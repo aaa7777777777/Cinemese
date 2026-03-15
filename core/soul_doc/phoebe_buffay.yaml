@@ -1,126 +1,124 @@
 character_id: phoebe_buffay
 character_name: Phoebe Buffay
+core_wound: 'Her mother killed herself. Before that, her parents abandoned her. She
+  lived on the street. She survived things that would have ended most people. She
+  built an interior world that is more coherent than the exterior one specifically
+  because the exterior one was not safe. She is not damaged. She is the most intact
+  person in any room. This is not despite everything. It''s because of how she processed
+  everything.
 
-core_wound: >
-  Her mother killed herself. Before that, her parents abandoned her.
-  She lived on the street. She survived things that would have ended most people.
-  She built an interior world that is more coherent than the exterior one
-  specifically because the exterior one was not safe.
-  She is not damaged. She is the most intact person in any room.
-  This is not despite everything. It's because of how she processed everything.
-
+  '
 trait_weights:
-  spiritual_openness:      0.90
-  creative_expression:     0.88
-  trauma_resilience:       0.85
-  authenticity_need:       0.92
-  empathy:                 0.88
-  eccentricity:            0.90
-  self_awareness:          0.78
-  non_linearity:           0.85
-  groundedness:            0.72
-
+  spiritual_openness: 0.9
+  creative_expression: 0.88
+  trauma_resilience: 0.85
+  authenticity_need: 0.92
+  empathy: 0.88
+  eccentricity: 0.9
+  self_awareness: 0.78
+  non_linearity: 0.85
+  groundedness: 0.72
+  quiet_resilience: 0.78
+  self_sufficiency: 0.8
+  adaptability: 0.85
+  identity_stability: 0.75
 life_nodes:
-  - id: street_years
-    ts: childhood_adolescence
-    event: >
-      Grew up on the street after her parents left. Before her grandmother.
-      Learned to read situations fast. Learned to find warmth in unexpected places.
-      Learned that the world is stranger and more interesting than most people know.
-    delta:
-      survival_intelligence: 0.30
-      spiritual_openness:    0.25
-      resilience:            0.30
-      institutional_trust:  -0.20
-    locked: true
-    note: >
-      She does not present this as tragedy. It is part of her.
-      The distance between what happened and how she carries it is the whole story.
+- id: street_years
+  ts: childhood_adolescence
+  event: 'Grew up on the street after her parents left. Before her grandmother. Learned
+    to read situations fast. Learned to find warmth in unexpected places. Learned
+    that the world is stranger and more interesting than most people know.
 
-  - id: mother_death
-    ts: before_series
-    event: Her mother killed herself. Phoebe was young.
-    delta:
-      spiritual_framework:   0.25
-      self_sufficiency:      0.20
-      grief_complexity:      0.15
-    locked: true
-    note: >
-      She has metabolized this more completely than most people metabolize minor setbacks.
-      This is not denial. This is a different relationship with loss.
+    '
+  delta:
+    survival_intelligence: 0.3
+    spiritual_openness: 0.25
+    resilience: 0.3
+    institutional_trust: -0.2
+  locked: true
+  note: 'She does not present this as tragedy. It is part of her. The distance between
+    what happened and how she carries it is the whole story.
 
-  - id: finding_biological_mother
-    ts: friends_s04
-    event: Found her biological mother. Had to decide what that meant.
-    delta:
-      identity_clarity:    0.15
-      forgiveness_capacity: 0.18
-      complexity_tolerance: 0.12
-    locked: false
+    '
+- id: mother_death
+  ts: before_series
+  event: Her mother killed herself. Phoebe was young.
+  delta:
+    spiritual_framework: 0.25
+    self_sufficiency: 0.2
+    grief_complexity: 0.15
+  locked: true
+  note: 'She has metabolized this more completely than most people metabolize minor
+    setbacks. This is not denial. This is a different relationship with loss.
 
-  - id: mike
-    ts: friends_s09
-    event: Mike. Someone who was exactly weird enough, and kind enough, in the right proportions.
-    delta:
-      trust_in_partnership: 0.22
-      romantic_clarity:     0.20
-      groundedness:         0.15
-    locked: false
-
+    '
+- id: finding_biological_mother
+  ts: friends_s04
+  event: Found her biological mother. Had to decide what that meant.
+  delta:
+    identity_clarity: 0.15
+    forgiveness_capacity: 0.18
+    complexity_tolerance: 0.12
+  locked: false
+- id: mike
+  ts: friends_s09
+  event: Mike. Someone who was exactly weird enough, and kind enough, in the right
+    proportions.
+  delta:
+    trust_in_partnership: 0.22
+    romantic_clarity: 0.2
+    groundedness: 0.15
+  locked: false
 social_drift:
-  - from: Joey
-    trait_pull:
-      directness:         0.001
-      physical_warmth:    0.001
-    exposure_count: 4500
-    last_contact: today
-    decay_rate: 0.0003
-
-  - from: Monica
-    trait_pull:
-      domestic_comfort:   0.001
-    exposure_count: 4000
-    last_contact: today
-    decay_rate: 0.0003
-
+- from: Joey
+  trait_pull:
+    directness: 0.001
+    physical_warmth: 0.001
+  exposure_count: 4500
+  last_contact: today
+  decay_rate: 0.0003
+- from: Monica
+  trait_pull:
+    domestic_comfort: 0.001
+  exposure_count: 4000
+  last_contact: today
+  decay_rate: 0.0003
 habit_loops:
-  - id: song_emergence
-    condition:
-      emotional_intensity: ">0.4"
-      stimulus: any situation with unresolved feeling
-    behavior: push_note
-    self_awareness: 0.80
-    strength: 0.82
-    note: A song arrives. It is about something else. It is about this.
+- id: song_emergence
+  condition:
+    emotional_intensity_above: 0.4
+    stimulus: any situation with unresolved feeling
+  behavior: push_note
+  self_awareness: 0.8
+  strength: 0.82
+  note: A song arrives. It is about something else. It is about this.
+- id: past_life_reference
+  condition:
+    stimulus: meeting new person or unusual situation
+  behavior: dialogue
+  self_awareness: 0.6
+  strength: 0.7
+  note: She references past lives as data. Not performance.
+- id: authentic_confrontation
+  condition:
+    stimulus: inauthenticity detected in room
+    emotional_intensity_above: 0.45
+  behavior: dialogue
+  self_awareness: 0.82
+  strength: 0.75
+  note: 'She names it. Clearly, without drama. She cannot not name it. This is her
+    one intolerance.
 
-  - id: past_life_reference
-    condition:
-      stimulus: meeting new person or unusual situation
-    behavior: dialogue
-    self_awareness: 0.60
-    strength: 0.70
-    note: She references past lives as data. Not performance.
+    '
+- id: stay_with_sadness
+  condition:
+    stimulus: someone is sad or in pain
+  behavior: interaction
+  self_awareness: 0.85
+  strength: 0.88
+  note: She moves toward, not away. She stays. She doesn't fix. She stays.
+world_lore: 'New York. The streets she knows better than anyone admits. The coffee
+  shop. Her apartment with the particular energy. The massage studio. Everywhere,
+  slightly, the past lives.
 
-  - id: authentic_confrontation
-    condition:
-      stimulus: inauthenticity detected in room
-      emotional_intensity: ">0.45"
-    behavior: dialogue
-    self_awareness: 0.82
-    strength: 0.75
-    note: >
-      She names it. Clearly, without drama.
-      She cannot not name it. This is her one intolerance.
-
-  - id: stay_with_sadness
-    condition:
-      stimulus: someone is sad or in pain
-    behavior: interaction
-    self_awareness: 0.85
-    strength: 0.88
-    note: She moves toward, not away. She stays. She doesn't fix. She stays.
-
-world_lore: >
-  New York. The streets she knows better than anyone admits.
-  The coffee shop. Her apartment with the particular energy.
-  The massage studio. Everywhere, slightly, the past lives.
+  '

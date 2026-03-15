@@ -14,6 +14,16 @@ from typing import Optional
 
 ROOT = Path(__file__).parent.parent
 
+# ── Thread registry + relationship cache (lazy import to avoid circular deps) ─
+
+def _get_registry():
+    from network.thread_registry import REGISTRY
+    return REGISTRY
+
+def _get_rel_cache():
+    from network.relationship_graph.relationship_cache import CACHE
+    return CACHE
+
 
 def run_episode(
     agent_a_id: str,
@@ -27,7 +37,21 @@ def run_episode(
     Run a multi-turn episode between two agents.
     Returns the episode record (each agent gets only their own view).
     dry_run=True: generates structure but skips LLM calls, uses placeholders.
+
+    Side effects (always, even dry_run):
+      - Creates or loads the AgentThread for this pair
+      - Appends a compressed EpisodeSummary to the thread after completion
+      - Updates RelationshipCache with post-episode deltas
     """
+
+    # ── Thread lookup ──────────────────────────────────────────────────────
+    try:
+        registry = _get_registry()
+        thread, is_new = registry.find_or_create(agent_a_id, agent_b_id)
+    except Exception as e:
+        print(f"[episode_runner] thread_registry unavailable: {e}")
+        thread = None
+        is_new = False
 
     # Load public personas
     persona_a = _load_persona(agent_a_id)
@@ -36,6 +60,15 @@ def run_episode(
     # Load assembled prompts (system prompts) from each agent's soul_doc
     sys_a = _load_system_prompt(agent_a_id)
     sys_b = _load_system_prompt(agent_b_id)
+
+    # Inject thread memory into system prompts (characters "remember" each other)
+    if thread:
+        mem_a = thread.memory_fragment_for(agent_a_id)
+        mem_b = thread.memory_fragment_for(agent_b_id)
+        if mem_a:
+            sys_a = sys_a + "\n\n───────────────────────────────\nWHAT YOU REMEMBER\n───────────────────────────────\n" + mem_a
+        if mem_b:
+            sys_b = sys_b + "\n\n───────────────────────────────\nWHAT YOU REMEMBER\n───────────────────────────────\n" + mem_b
 
     # Shared neutral scene
     scene = _generate_scene(persona_a, persona_b)
@@ -82,16 +115,61 @@ def run_episode(
     view_a = _agent_view(transcript, agent_a_id, persona_a, persona_b, scene, session_intensity)
     view_b = _agent_view(transcript, agent_b_id, persona_b, persona_a, scene, session_intensity)
 
-    return {
+    # Derive outcome valence from last turn soul events
+    outcome_valence = _estimate_outcome_valence(view_a, view_b)
+
+    # ── Compress and persist episode to thread ────────────────────────────
+    if thread:
+        try:
+            rel_cache = _get_rel_cache()
+            rel_ab = rel_cache.get(agent_a_id, agent_b_id)
+            rel_ba = rel_cache.get(agent_b_id, agent_a_id)
+
+            registry.record_episode(
+                thread           = thread,
+                scene_id         = _scene_to_id(scene),
+                turns            = turns,
+                intensity        = session_intensity,
+                outcome_valence  = outcome_valence,
+                summary_a        = view_a["summary"],
+                summary_b        = view_b["summary"],
+                relationship_a_to_b = rel_ab,
+                relationship_b_to_a = rel_ba,
+                agent_a_id       = agent_a_id,
+                agent_b_id       = agent_b_id,
+            )
+        except Exception as e:
+            print(f"[episode_runner] thread record_episode failed: {e}")
+
+        # ── Update relationship vectors after episode ──────────────────────
+        try:
+            rel_cache = _get_rel_cache()
+            rel_cache.update_after_episode(
+                agent_a_id        = agent_a_id,
+                agent_b_id        = agent_b_id,
+                episode_intensity = session_intensity,
+                outcome_valence   = outcome_valence,
+                turns             = turns,
+            )
+        except Exception as e:
+            print(f"[episode_runner] relationship_cache update failed: {e}")
+
+    result = {
         "session_id":        session_id,
         "ts":                time.strftime("%Y-%m-%dT%H:%M:%S"),
         "turns":             turns,
         "session_intensity": session_intensity,
+        "outcome_valence":   outcome_valence,
         "scene":             scene,
         "view_a":            view_a,
         "view_b":            view_b,
         # joint transcript deliberately not stored
     }
+    if thread:
+        result["thread_id"] = thread.thread_id
+        result["episode_number"] = thread.episode_count
+
+    return result
 
 
 def _load_persona(character_id: str) -> dict:
@@ -239,6 +317,43 @@ def _summarize_episode(
             f"an encounter with {other_name} that didn't resolve cleanly.",
         ]
     return random.choice(templates)
+
+
+def _estimate_outcome_valence(view_a: dict, view_b: dict) -> float:
+    """
+    Estimate how the episode went overall (-1 bad → +1 good).
+    Derived from the valence_push values in both agents' soul_events.
+    Falls back to a slight positive bias (most encounters in the Friends universe
+    resolve toward connection even after friction).
+    """
+    pushes = []
+    for view in (view_a, view_b):
+        vp = view.get("soul_event", {}).get("valence_push")
+        if vp is not None:
+            pushes.append(float(vp))
+    if pushes:
+        return round(sum(pushes) / len(pushes), 3)
+    return round(random.uniform(0.0, 0.25), 3)   # neutral-positive fallback
+
+
+def _scene_to_id(scene: str) -> str:
+    """
+    Convert a human-readable scene description to a short snake_case id
+    for storage in EpisodeSummary.scene_id.
+    """
+    mapping = {
+        "Central Perk":      "central_perk",
+        "hallway":           "hallway",
+        "couch":             "apartment_couch",
+        "roof":              "building_roof",
+        "Monica's kitchen":  "monica_kitchen",
+    }
+    for key, sid in mapping.items():
+        if key.lower() in scene.lower():
+            return sid
+    # fallback: first 3 words lowercased joined by underscores
+    words = scene.lower().split()[:3]
+    return "_".join(w.strip(".,") for w in words)
 
 
 def _call_llm(system: str, user: str, api_key: Optional[str]) -> str:

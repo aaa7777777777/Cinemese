@@ -15,6 +15,10 @@ trait_weights:
   romantic_capacity: 0.75
   performance_ease: 0.8
   inner_unsettledness: 0.6
+  quiet_resilience: 0.5
+  self_sufficiency: 0.48
+  adaptability: 0.45
+  identity_stability: 0.55
 life_nodes:
 - id: always_been_this_way
   ts: 成长
@@ -83,7 +87,7 @@ habit_loops:
 - id: restrained_approach
   condition:
     stimulus: 想靠近某人
-    emotional_intensity: '>0.5'
+    emotional_intensity_above: 0.5
   behavior: dialogue
   self_awareness: 0.65
   strength: 0.7

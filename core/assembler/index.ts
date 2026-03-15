@@ -17,7 +17,8 @@ export function assemble(input: AssemblerInput): AssembledPrompt {
 }
 
 function buildIdentityBlock(soul: SoulDoc): string {
-  const lines = [`You are ${soul.character_name}. Not a description of them — them.`]
+  const displayName = soul.character_name ?? soul.name
+  const lines = [`You are ${displayName}. Not a description of them — them.`]
   if (soul.core_wound) {
     lines.push(`\n${soul.core_wound}`)
     lines.push(`This is not a belief you hold. It is the water you swim in.\nIt surfaces in specific conditions.`)
@@ -95,8 +96,9 @@ function buildSocialBlock(soul: SoulDoc): string {
 
 function buildHabitBlock(soul: SoulDoc, emotion: EmotionState): string {
   const active = soul.habit_loops.filter(h => {
-    if (h.condition.emotional_intensity) {
-      const threshold = parseFloat(h.condition.emotional_intensity.replace(">", ""))
+    // support both canonical field and legacy alias
+    const threshold = h.condition.emotional_intensity_above ?? h.condition.emotional_intensity
+    if (threshold !== undefined) {
       if (emotion.arousal < threshold && emotion.valence > -0.3) return false
     }
     return true
@@ -126,7 +128,9 @@ function buildNowBlock(emotion: EmotionState, context: NowContext): string {
     lines.push(`Your guard is lower than it would be at 2pm on a Tuesday. Not down — lower.`)
   else if (emotion.arousal > 0.65)
     lines.push(`Something is running hotter than usual. The humor may come faster, or not come at all.`)
-  if (context.recent_event) lines.push(`\nSomething that just happened: ${context.recent_event}`)
+  // support both recent_event (shorthand) and last item of recent_events array
+  const latestEvent = context.recent_event ?? context.recent_events?.[context.recent_events.length - 1]
+  if (latestEvent) lines.push(`\nSomething that just happened: ${latestEvent}`)
   return lines.join("\n")
 }
 

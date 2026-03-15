@@ -11,6 +11,7 @@ export interface LifeNode {
   delta: Record<string, number> // trait_name → signed float
   locked: boolean               // true = only another life node can overwrite
   source: "user" | "story_engine" | "emotion_module"
+  note?: string                 // optional plain-language annotation for assembler
 }
 
 export interface SocialDrift {
@@ -28,7 +29,9 @@ export interface HabitLoop {
   condition: {
     time_window?: string              // "23:00-03:00"
     idle_hours?: number
-    emotional_intensity_above?: number
+    emotional_intensity_above?: number  // activates when arousal > this value
+    /** @deprecated use emotional_intensity_above */
+    emotional_intensity?: number
     stimulus?: string
   }
   behavior: SkillModality | "internal_response"
@@ -41,13 +44,17 @@ export interface HabitLoop {
 
 export interface SoulDoc {
   character_id: string
-  name: string
+  character_name: string            // canonical display name used by assembler
+  /** @deprecated use character_name */
+  name?: string
   core_wound?: string
   trait_weights: Record<string, number>
   life_nodes: LifeNode[]
   social_drift: SocialDrift[]
   habit_loops: HabitLoop[]
   world_lore: string
+  world_tags?: string[]             // e.g. ["usa", "1990s", "urban"]
+  world_id?: string                 // e.g. "usa_1990s_urban"
   voice_profile?: VoiceProfile
 }
 
@@ -62,6 +69,7 @@ export interface EmotionState {
   flashback_triggers: string[]
   drift_pressure: number
   window_start: string
+  window_note?: string                // optional narrative injected into assembler RIGHT NOW block
 }
 
 // ─────────────────────────────────────────────
@@ -74,7 +82,8 @@ export interface NowContext {
   day_type: "weekday" | "weekend"
   location?: string
   scene_notes?: string
-  recent_events: string[]
+  recent_events: string[]           // full history list
+  recent_event?: string             // shorthand: last item of recent_events, used by assembler
   user_message?: string
 }
 

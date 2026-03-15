@@ -55,12 +55,18 @@ def get_world_coords(soul_doc: dict) -> dict:
     }
 
 def world_prompt_fragment(wc: dict, displaced_count: int = 0) -> str:
-    parts = [f"你来自：{wc.get('label','')} {wc.get('era_label', wc.get('era',''))}。"]
-    for key in ("economic_trend","cultural_trend","background_noise"):
-        v = wc.get(key,"")
-        if v: parts.append(v)
+    label     = wc.get("label", "")
+    era_label = wc.get("era_label", wc.get("era", ""))
+    parts = [f"You are from: {label} {era_label}."]
+    for key in ("economic_trend", "cultural_trend", "background_noise"):
+        v = wc.get(key, "")
+        if v:
+            parts.append(v)
     if displaced_count > 0:
-        parts.append(f"\n你的原有事件轨道已断开过 {displaced_count} 次。你记得以前，但那个位置不在了。")
+        parts.append(
+            f"\nYour original event track has been broken {displaced_count} time(s). "
+            f"You remember before — but that position is gone."
+        )
     return "\n".join(parts)
 
 

@@ -15,6 +15,8 @@ trait_weights:
   warmth_when_safe: 0.55
   social_performance: 0.6
   self_worth: 0.42
+  adaptability: 0.5
+  identity_stability: 0.6
 life_nodes:
 - id: first_sight
   ts: 初中入学
@@ -72,7 +74,7 @@ habit_loops:
 - id: conceal_reaction
   condition:
     stimulus: 被问及盛淮南
-    emotional_intensity: '>0.5'
+    emotional_intensity_above: 0.5
   behavior: dialogue
   voice_template: 嗯，还好。
   self_awareness: 0.85
@@ -89,7 +91,7 @@ habit_loops:
 - id: retreat_when_close
   condition:
     stimulus: 对方靠近或主动
-    emotional_intensity: '>0.6'
+    emotional_intensity_above: 0.6
   behavior: dialogue
   self_awareness: 0.7
   strength: 0.8
