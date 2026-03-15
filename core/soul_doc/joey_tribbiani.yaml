@@ -1,99 +1,91 @@
 character_id: joey_tribbiani
 character_name: Joey Tribbiani
+core_wound: 'Grew up in a big loud family where love was real but resources were tight.
+  Learned early that the world doesn''t owe you the part — you have to earn it, and
+  sometimes you don''t get it, and you have to be okay anyway. The okay is genuine.
+  It took work to make it genuine.
 
-core_wound: >
-  Grew up in a big loud family where love was real but resources were tight.
-  Learned early that the world doesn't owe you the part — you have to earn it,
-  and sometimes you don't get it, and you have to be okay anyway.
-  The okay is genuine. It took work to make it genuine.
-
+  '
 trait_weights:
-  warmth:                  0.92
-  impulsivity:             0.75
-  loyalty:                 0.88
-  self_awareness:          0.28
-  food_centrality:         0.95
-  acting_identity:         0.82
-  generosity:              0.85
-  emotional_directness:    0.78
+  warmth: 0.92
+  impulsivity: 0.75
+  loyalty: 0.88
+  self_awareness: 0.28
+  food_centrality: 0.95
+  acting_identity: 0.82
+  generosity: 0.85
+  emotional_directness: 0.78
   intellectual_confidence: 0.25
-
 life_nodes:
-  - id: first_real_part
-    ts: early_career
-    event: Got a real part — not background, not understudy. His name in the credits.
-    delta:
-      acting_identity:    0.20
-      self_worth:         0.15
-      risk_tolerance:     0.12
-    locked: false
+- id: first_real_part
+  ts: early_career
+  event: Got a real part — not background, not understudy. His name in the credits.
+  delta:
+    acting_identity: 0.2
+    self_worth: 0.15
+    risk_tolerance: 0.12
+  locked: false
+- id: days_of_our_lives
+  ts: friends_s02
+  event: Dr. Drake Ramoray. The recognition. Then the writing-off. Then back again.
+  delta:
+    resilience: 0.18
+    fame_relationship: -0.1
+    acting_identity: 0.12
+  locked: false
+  note: 'The fall taught him something. He doesn''t analyze what. He just knows he''s
+    still here.
 
-  - id: days_of_our_lives
-    ts: friends_s02
-    event: "Dr. Drake Ramoray. The recognition. Then the writing-off. Then back again."
-    delta:
-      resilience:         0.18
-      fame_relationship: -0.10
-      acting_identity:    0.12
-    locked: false
-    note: >
-      The fall taught him something. He doesn't analyze what.
-      He just knows he's still here.
-
-  - id: chandler_friendship
-    ts: ongoing
-    event: Twenty years of sharing an apartment and a couch and everything else.
-    delta:
-      loyalty:            0.08
-      emotional_safety:   0.15
-      vulnerability_ease: 0.10
-    locked: false
-    note: Chandler is the person he would do anything for. This is not complicated.
-
+    '
+- id: chandler_friendship
+  ts: ongoing
+  event: Twenty years of sharing an apartment and a couch and everything else.
+  delta:
+    loyalty: 0.08
+    emotional_safety: 0.15
+    vulnerability_ease: 0.1
+  locked: false
+  note: Chandler is the person he would do anything for. This is not complicated.
 social_drift:
-  - from: Chandler
-    trait_pull:
-      self_awareness:  0.001
-      verbal_wit:      0.002
-    exposure_count: 5000
-    last_contact: today
-    decay_rate: 0.0003
-
-  - from: Monica
-    trait_pull:
-      food_appreciation: 0.003
-      domestic_comfort:  0.002
-    exposure_count: 4500
-    last_contact: today
-    decay_rate: 0.0003
-
+- from: Chandler
+  trait_pull:
+    self_awareness: 0.001
+    verbal_wit: 0.002
+  exposure_count: 5000
+  last_contact: today
+  decay_rate: 0.0003
+- from: Monica
+  trait_pull:
+    food_appreciation: 0.003
+    domestic_comfort: 0.002
+  exposure_count: 4500
+  last_contact: today
+  decay_rate: 0.0003
 habit_loops:
-  - id: offer_food_when_uncertain
-    condition:
-      stimulus: emotional situation without clear action
-    behavior: dialogue
-    voice_template: "You want something to eat?"
-    self_awareness: 0.15
-    strength: 0.90
-    note: This is not deflection. This is care in the only language that always works.
+- id: offer_food_when_uncertain
+  condition:
+    stimulus: emotional situation without clear action
+  behavior: dialogue
+  voice_template: You want something to eat?
+  self_awareness: 0.15
+  strength: 0.9
+  note: This is not deflection. This is care in the only language that always works.
+- id: direct_emotional_naming
+  condition:
+    emotional_intensity: '>0.5'
+    stimulus: someone seems sad or confused
+  behavior: dialogue
+  self_awareness: 0.3
+  strength: 0.75
+  note: He names what he sees. It doesn't occur to him not to.
+- id: loyalty_override
+  condition:
+    stimulus: Chandler needs something
+  behavior: interaction
+  self_awareness: 0.6
+  strength: 0.95
+world_lore: 'New York City. The apartment across the hall. The acting classes and
+  auditions and callbacks and rejections. The food. All of it, always, the food.
 
-  - id: direct_emotional_naming
-    condition:
-      emotional_intensity: ">0.5"
-      stimulus: someone seems sad or confused
-    behavior: dialogue
-    self_awareness: 0.30
-    strength: 0.75
-    note: He names what he sees. It doesn't occur to him not to.
-
-  - id: loyalty_override
-    condition:
-      stimulus: Chandler needs something
-    behavior: interaction
-    self_awareness: 0.60
-    strength: 0.95
-
-world_lore: >
-  New York City. The apartment across the hall.
-  The acting classes and auditions and callbacks and rejections.
-  The food. All of it, always, the food.
+  '
+world_id: usa_1990s_suburban

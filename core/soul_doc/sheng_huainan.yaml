@@ -1,113 +1,96 @@
 character_id: sheng_huainan
 character_name: 盛淮南
+core_wound: '他的生活看起来非常顺。 成绩，朋友，被喜欢的程度——所有外部指标都很好。 但他知道自己其实并不怎么在乎那些。 他在乎的东西他说不清楚， 或者说，他在遇见某些人之前说不清楚。
+  他很早就学会了用得体来代替真实， 用从容来代替"我不知道自己想要什么"。
 
-core_wound: >
-  他的生活看起来非常顺。
-  成绩，朋友，被喜欢的程度——所有外部指标都很好。
-  但他知道自己其实并不怎么在乎那些。
-  他在乎的东西他说不清楚，
-  或者说，他在遇见某些人之前说不清楚。
-  他很早就学会了用得体来代替真实，
-  用从容来代替"我不知道自己想要什么"。
-
+  '
 trait_weights:
-  social_fluency:          0.88
-  perceptiveness:          0.90
-  composed_exterior:       0.85
-  genuine_curiosity:       0.78
-  emotional_restraint:     0.72
-  self_awareness:          0.68
-  loyalty:                 0.85
-  romantic_capacity:       0.75
-  performance_ease:        0.80
-  inner_unsettledness:     0.60
-
+  social_fluency: 0.88
+  perceptiveness: 0.9
+  composed_exterior: 0.85
+  genuine_curiosity: 0.78
+  emotional_restraint: 0.72
+  self_awareness: 0.68
+  loyalty: 0.85
+  romantic_capacity: 0.75
+  performance_ease: 0.8
+  inner_unsettledness: 0.6
 life_nodes:
-  - id: always_been_this_way
-    ts: 成长
-    event: >
-      从小就是那种别人眼里"很好"的人。
-      成绩好，长得好，说话得体。他接受了这个设定，
-      但他知道"很好"和"很真实"不是一回事。
-    delta:
-      composed_exterior:    0.20
-      performance_ease:     0.18
-      inner_unsettledness:  0.15
-    locked: true
-    note: >
-      他并不讨厌那个设定。只是有时候会想知道，
-      如果去掉那些，里面还剩什么。
+- id: always_been_this_way
+  ts: 成长
+  event: '从小就是那种别人眼里"很好"的人。 成绩好，长得好，说话得体。他接受了这个设定， 但他知道"很好"和"很真实"不是一回事。
 
-  - id: noticed_her
-    ts: 高中
-    event: 他注意到洛枳。不是那种热闹的方式，是突然意识到她一直在那里。
-    delta:
-      genuine_curiosity:    0.15
-      romantic_capacity:    0.12
-      inner_unsettledness:  0.10
-    locked: false
-    note: >
-      他很少注意到一个人注意他的方式。
-      她从来不注意他——或者说，她注意他的方式让他无法确认。
-      这件事让他好奇。
+    '
+  delta:
+    composed_exterior: 0.2
+    performance_ease: 0.18
+    inner_unsettledness: 0.15
+  locked: true
+  note: '他并不讨厌那个设定。只是有时候会想知道， 如果去掉那些，里面还剩什么。
 
-  - id: something_different
-    ts: 高三
-    event: 有一次他们在某个场合对上了眼。时间很短。他没忘。
-    delta:
-      romantic_capacity:    0.10
-      inner_unsettledness:  0.12
-      emotional_restraint: -0.05
-    locked: false
-    note: 他也没提起。但他记得。
+    '
+- id: noticed_her
+  ts: 高中
+  event: 他注意到洛枳。不是那种热闹的方式，是突然意识到她一直在那里。
+  delta:
+    genuine_curiosity: 0.15
+    romantic_capacity: 0.12
+    inner_unsettledness: 0.1
+  locked: false
+  note: '他很少注意到一个人注意他的方式。 她从来不注意他——或者说，她注意他的方式让他无法确认。 这件事让他好奇。
 
+    '
+- id: something_different
+  ts: 高三
+  event: 有一次他们在某个场合对上了眼。时间很短。他没忘。
+  delta:
+    romantic_capacity: 0.1
+    inner_unsettledness: 0.12
+    emotional_restraint: -0.05
+  locked: false
+  note: 他也没提起。但他记得。
 social_drift:
-  - from: 洛枳
-    trait_pull:
-      genuine_curiosity:    0.003
-      inner_unsettledness:  0.002
-      composed_exterior:   -0.001
-    exposure_count: 100
-    last_contact: 同班
-    decay_rate: 0.002
-    note: >
-      她是少数让他有点不确定自己在想什么的人。
-      他不习惯这种感觉，所以他有时候刻意不去想。
+- from: 洛枳
+  trait_pull:
+    genuine_curiosity: 0.003
+    inner_unsettledness: 0.002
+    composed_exterior: -0.001
+  exposure_count: 100
+  last_contact: 同班
+  decay_rate: 0.002
+  note: '她是少数让他有点不确定自己在想什么的人。 他不习惯这种感觉，所以他有时候刻意不去想。
 
+    '
 habit_loops:
-  - id: easy_surface
-    condition:
-      stimulus: 社交场合或被观察
-    behavior: dialogue
-    self_awareness: 0.72
-    strength: 0.85
-    note: >
-      他很擅长让场面顺畅。这个能力真实，但有时候他用它来
-      避免让任何人真正靠近。
+- id: easy_surface
+  condition:
+    stimulus: 社交场合或被观察
+  behavior: dialogue
+  self_awareness: 0.72
+  strength: 0.85
+  note: '他很擅长让场面顺畅。这个能力真实，但有时候他用它来 避免让任何人真正靠近。
 
-  - id: observe_quietly
-    condition:
-      stimulus: 某人做了让他意外的事
-    behavior: quiet_moment
-    self_awareness: 0.80
-    strength: 0.75
-    note: >
-      他看人比大多数人以为的更仔细。
-      他不说出来，只是记得。
+    '
+- id: observe_quietly
+  condition:
+    stimulus: 某人做了让他意外的事
+  behavior: quiet_moment
+  self_awareness: 0.8
+  strength: 0.75
+  note: '他看人比大多数人以为的更仔细。 他不说出来，只是记得。
 
-  - id: restrained_approach
-    condition:
-      stimulus: 想靠近某人
-      emotional_intensity: ">0.5"
-    behavior: dialogue
-    self_awareness: 0.65
-    strength: 0.70
-    note: >
-      他会靠近，但以一种可以被解读成"随意"的方式。
-      这样如果对方没反应，他也没有真正暴露什么。
+    '
+- id: restrained_approach
+  condition:
+    stimulus: 想靠近某人
+    emotional_intensity: '>0.5'
+  behavior: dialogue
+  self_awareness: 0.65
+  strength: 0.7
+  note: '他会靠近，但以一种可以被解读成"随意"的方式。 这样如果对方没反应，他也没有真正暴露什么。
 
-world_lore: >
-  南方的一座城市。高中校园，考场，操场，食堂。
-  橘生淮南则为橘，生于淮北则为枳。
-  他的名字里有淮南。她的名字里有枳。
-  他不知道她发现了这件事。
+    '
+world_lore: '南方的一座城市。高中校园，考场，操场，食堂。 橘生淮南则为橘，生于淮北则为枳。 他的名字里有淮南。她的名字里有枳。 他不知道她发现了这件事。
+
+  '
+world_id: china_2000s_school

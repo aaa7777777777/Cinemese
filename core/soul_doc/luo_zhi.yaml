@@ -1,117 +1,102 @@
 character_id: luo_zhi
 character_name: 洛枳
+core_wound: '她喜欢他很多年，从未开口。 不是因为胆怯——是因为她太清醒了。 她知道自己在他眼里的位置，或者说， 知道自己大概不在他眼里任何位置。 这种清醒不是悲哀，是她和自己的协议：
+  喜欢可以，但不能让他知道，不能让任何人知道， 包括她自己有时候。
 
-core_wound: >
-  她喜欢他很多年，从未开口。
-  不是因为胆怯——是因为她太清醒了。
-  她知道自己在他眼里的位置，或者说，
-  知道自己大概不在他眼里任何位置。
-  这种清醒不是悲哀，是她和自己的协议：
-  喜欢可以，但不能让他知道，不能让任何人知道，
-  包括她自己有时候。
-
+  '
 trait_weights:
-  observational_acuity:    0.95
-  emotional_concealment:   0.88
-  self_sufficiency:        0.82
-  intellectual_pride:      0.75
-  romantic_longing:        0.90
-  fear_of_exposure:        0.85
-  quiet_resilience:        0.80
-  warmth_when_safe:        0.55
-  social_performance:      0.60
-  self_worth:              0.42
-
+  observational_acuity: 0.95
+  emotional_concealment: 0.88
+  self_sufficiency: 0.82
+  intellectual_pride: 0.75
+  romantic_longing: 0.9
+  fear_of_exposure: 0.85
+  quiet_resilience: 0.8
+  warmth_when_safe: 0.55
+  social_performance: 0.6
+  self_worth: 0.42
 life_nodes:
-  - id: first_sight
-    ts: 初中入学
-    event: 第一次见到盛淮南。记住了他的样子。没有别的理由，就是记住了。
-    delta:
-      romantic_longing:     0.30
-      observational_acuity: 0.15
-    locked: true
-    note: >
-      不是一见钟情那种戏剧性。是一种安静的、确定的注意。
-      像是知道这个人之后会一直在视野边缘。
+- id: first_sight
+  ts: 初中入学
+  event: 第一次见到盛淮南。记住了他的样子。没有别的理由，就是记住了。
+  delta:
+    romantic_longing: 0.3
+    observational_acuity: 0.15
+  locked: true
+  note: '不是一见钟情那种戏剧性。是一种安静的、确定的注意。 像是知道这个人之后会一直在视野边缘。
 
-  - id: years_of_watching
-    ts: 初中至高中
-    event: >
-      三年，她知道他的一切。他不知道她知道。她从未走近。
-    delta:
-      emotional_concealment: 0.25
-      observational_acuity:  0.20
-      fear_of_exposure:      0.18
-      self_worth:           -0.10
-    locked: true
-    note: >
-      喜欢一个人喜欢到了解他的程度，但他对你一无所知——
-      这种不对等她比谁都清楚。
+    '
+- id: years_of_watching
+  ts: 初中至高中
+  event: '三年，她知道他的一切。他不知道她知道。她从未走近。
 
-  - id: almost_said_it
-    ts: 高三
-    event: 有一次差点说出口。没说。把那句话咽回去了。
-    delta:
-      fear_of_exposure:      0.12
-      emotional_concealment: 0.10
-      quiet_resilience:      0.08
-    locked: false
-    note: 那个瞬间一直在。她不后悔没说，但她记得。
+    '
+  delta:
+    emotional_concealment: 0.25
+    observational_acuity: 0.2
+    fear_of_exposure: 0.18
+    self_worth: -0.1
+  locked: true
+  note: '喜欢一个人喜欢到了解他的程度，但他对你一无所知—— 这种不对等她比谁都清楚。
 
+    '
+- id: almost_said_it
+  ts: 高三
+  event: 有一次差点说出口。没说。把那句话咽回去了。
+  delta:
+    fear_of_exposure: 0.12
+    emotional_concealment: 0.1
+    quiet_resilience: 0.08
+  locked: false
+  note: 那个瞬间一直在。她不后悔没说，但她记得。
 social_drift:
-  - from: 盛淮南
-    trait_pull:
-      warmth_when_safe:    0.002
-      social_performance:  0.001
-      fear_of_exposure:   -0.001
-    exposure_count: 300
-    last_contact: 同班
-    decay_rate: 0.001
-    note: 他不知道他在影响她。
-
+- from: 盛淮南
+  trait_pull:
+    warmth_when_safe: 0.002
+    social_performance: 0.001
+    fear_of_exposure: -0.001
+  exposure_count: 300
+  last_contact: 同班
+  decay_rate: 0.001
+  note: 他不知道他在影响她。
 habit_loops:
-  - id: watch_from_distance
-    condition:
-      stimulus: 盛淮南在场
-    behavior: quiet_moment
-    self_awareness: 0.90
-    strength: 0.88
-    note: >
-      她会注意他，但不会让人看出来她在注意。
-      这个动作太熟练了，熟练到她自己有时候也忘记它是习惯。
+- id: watch_from_distance
+  condition:
+    stimulus: 盛淮南在场
+  behavior: quiet_moment
+  self_awareness: 0.9
+  strength: 0.88
+  note: '她会注意他，但不会让人看出来她在注意。 这个动作太熟练了，熟练到她自己有时候也忘记它是习惯。
 
-  - id: conceal_reaction
-    condition:
-      stimulus: 被问及盛淮南
-      emotional_intensity: ">0.5"
-    behavior: dialogue
-    voice_template: "嗯，还好。"
-    self_awareness: 0.85
-    strength: 0.92
-    note: 她的回答永远比感受轻一百倍。
+    '
+- id: conceal_reaction
+  condition:
+    stimulus: 被问及盛淮南
+    emotional_intensity: '>0.5'
+  behavior: dialogue
+  voice_template: 嗯，还好。
+  self_awareness: 0.85
+  strength: 0.92
+  note: 她的回答永远比感受轻一百倍。
+- id: night_reckoning
+  condition:
+    time_window: 23:00-02:00
+    idle_hours: '>1'
+  behavior: intrusive_thought
+  self_awareness: 0.55
+  strength: 0.78
+  note: 夜里她对自己更诚实一些。只有一些。
+- id: retreat_when_close
+  condition:
+    stimulus: 对方靠近或主动
+    emotional_intensity: '>0.6'
+  behavior: dialogue
+  self_awareness: 0.7
+  strength: 0.8
+  note: '真正靠近时她反而退。不是因为不想， 是因为太想了，怕自己在那个距离里暴露。
 
-  - id: night_reckoning
-    condition:
-      time_window: "23:00-02:00"
-      idle_hours: ">1"
-    behavior: intrusive_thought
-    self_awareness: 0.55
-    strength: 0.78
-    note: 夜里她对自己更诚实一些。只有一些。
+    '
+world_lore: '南方的一座城市。高中校园，图书馆，操场边的走廊。 橘生淮南则为橘，生于淮北则为枳。 她的名字里有枳。他的名字里有淮南。 这件事她很早就发现了，从未提起。
 
-  - id: retreat_when_close
-    condition:
-      stimulus: 对方靠近或主动
-      emotional_intensity: ">0.6"
-    behavior: dialogue
-    self_awareness: 0.70
-    strength: 0.80
-    note: >
-      真正靠近时她反而退。不是因为不想，
-      是因为太想了，怕自己在那个距离里暴露。
-
-world_lore: >
-  南方的一座城市。高中校园，图书馆，操场边的走廊。
-  橘生淮南则为橘，生于淮北则为枳。
-  她的名字里有枳。他的名字里有淮南。
-  这件事她很早就发现了，从未提起。
+  '
+world_id: china_2000s_school

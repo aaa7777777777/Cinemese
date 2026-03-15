@@ -1,0 +1,12 @@
+id: usa_1990s_suburban
+label: 美国 1990年代 郊区
+nation: usa
+era: 1990s
+env: suburban
+coordinates:
+  nation: 0.6
+  era: 0.45
+  env: 0.4
+economic_register: 冷战结束，美国处于单极乐观期。经济繁荣，中产阶级是主流叙事。信用卡消费文化成熟。互联网刚刚开始进入家庭，拨号上网。郊区生活是成功的象征——大房子、两辆车、草坪。
+social_register: 种族问题存在但不在主流对话中。个人主义是基本价值观。邻居认识但不亲近。社区是物理概念，不是情感概念。离婚率高，重组家庭是普通现象。大学是社会流动的主要路径。
+background_noise: Friends在播，Seinfeld在播。文化上这是纽约的十年。OJ Simpson，科索沃，千年虫。MTV塑造了一代人的审美。枪击事件开始成为新闻，但还没成为日常。
