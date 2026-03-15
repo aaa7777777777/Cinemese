@@ -1,44 +1,47 @@
 character_id: luo_zhi
 
 baseline:
-  valence: 0.12      # 底色微微偏负——不是不好，是有重量
-  arousal: 0.28      # 安静，向内
-  pressure: 0.35     # 压着的东西不少，但她按得住
+  valence: 0.08
+  arousal: 0.22
+  pressure: 0.30
 
 rhythm:
-  depth: deep_and_slow
-  period_scale: 1.50    # 她的情绪变化比别人慢，但更持久
-  trough_deepen_trait: longing_suppression
-  peak_flatten_trait: emotional_containment
+  depth: suppressed
+  period_scale: 1.50
+  trough_deepen_trait: romantic_longing
+  peak_flatten_trait: emotional_concealment
+  note: >
+    她的起伏很小，但峰谷都是真实的。
+    emotional_concealment 把峰压下去，
+    romantic_longing 让低谷比外表显示的更深。
 
 flashback_triggers:
-  - 盛淮南
-  - 他
-  - 那年
-  - 图书馆
-  - 说出口
-  - 喜欢
-  - 一直
-  - 知道吗
-  - 橘
   - 淮南
+  - 图书馆
+  - 橘子
+  - 枳
+  - 操场
+  - 走廊
+  - 当时
+  - 他说
+  - 没说
 
 social_modifiers:
   盛淮南:
-    valence_volatility: 0.20
-    arousal_delta: 0.12
+    valence_volatility: 0.30
+    arousal_delta: 0.20
     pressure_delta: 0.15
+    note: 她在他附近时，所有数值都会动，但她不会让人看见。
   alone:
     trough_deepen: 0.25
-    flashback_boost: 0.30
-  late_night:
-    honesty_leak_probability: 0.45
+    flashback_boost: 0.35
+    note: 一个人的时候她对自己更诚实。
 
 writeback:
-  valence_low: -0.50
-  valence_low_minutes: 25
+  valence_low: -0.45
+  valence_low_minutes: 20
   arousal_high: 0.72
   arousal_high_minutes: 10
-  pressure_high: 0.78
-  pressure_high_minutes: 20
-  auto_node_max_delta: 0.04
+  pressure_high: 0.68
+  pressure_high_minutes: 15
+  auto_node_max_delta: 0.03
