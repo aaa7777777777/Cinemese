@@ -148,6 +148,7 @@ def build_system_prompt(
     session:      DialogueSession,
     emotion:      EmotionState,
     addressee_id: Optional[str],
+    thread=None,
 ) -> str:
     doc   = _load_soul_doc(character_id)
     name  = doc.get("character_name", character_id)
@@ -200,6 +201,14 @@ def build_system_prompt(
         ]
     elif not addressee_id and other_names:
         lines += ["", "You are speaking to the room, or to no one in particular."]
+
+    # Thread memory — what happened in past meetings
+    if thread is not None:
+        memory = thread.memory_fragment_for(character_id)
+        if memory:
+            lines += ["", "─────────────────────────────",
+                      "WHAT YOU REMEMBER",
+                      "─────────────────────────────", "", memory]
 
     # Core output rules
     lines += [
@@ -302,8 +311,10 @@ class DialogueEngine:
         participants: list[str],
         scene_id:     str = "central_perk",
         user_in_room: bool = False,
+        thread=None,
     ):
         import uuid
+        self.thread = thread
         self.session = DialogueSession(
             session_id   = str(uuid.uuid4())[:8],
             scene        = SceneManager.from_id(scene_id).current,
@@ -339,7 +350,7 @@ class DialogueEngine:
         addressee_id = GRAPH.pick_addressee(speaker_id, self.session.participants)
         emotion      = self.engines[speaker_id].current if speaker_id in self.engines else None
 
-        system = build_system_prompt(speaker_id, self.session, emotion, addressee_id)
+        system = build_system_prompt(speaker_id, self.session, emotion, addressee_id, thread=self.thread)
         user   = build_user_turn(self.session, addressee_id, user_message)
 
         if dry_run or not api_key:

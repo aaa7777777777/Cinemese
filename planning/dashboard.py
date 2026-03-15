@@ -296,3 +296,125 @@ def change_scene(session_id: str, body: SceneTransition):
 @app.get("/dialogue/{session_id}/relationship/{char_a}/{char_b}")
 def get_relationship(session_id: str, char_a: str, char_b: str):
     return _GRAPH.get(char_a, char_b)
+
+# ── Thread endpoints ──────────────────────────────────────────────────────────
+
+from network.thread_registry import REGISTRY as _REGISTRY, make_thread_id
+
+class ThreadStart(BaseModel):
+    agent_a_id:  str
+    agent_b_id:  str
+    scene_id:    str = "central_perk"
+    owner_a:     Optional[str] = None
+    owner_b:     Optional[str] = None
+
+@app.post("/thread/find_or_create")
+def find_or_create_thread(body: ThreadStart):
+    """
+    Matchmaker calls this instead of /dialogue/start.
+    Returns the thread_id — new or existing.
+    UI uses thread_id as the stable window key.
+    """
+    thread, is_new = _REGISTRY.find_or_create(
+        body.agent_a_id, body.agent_b_id, body.owner_a, body.owner_b
+    )
+    return {
+        "thread_id":     thread.thread_id,
+        "is_new":        is_new,
+        "episode_count": thread.episode_count,
+        "last_met_at":   thread.last_met_at,
+        "participants":  [thread.agent_a_id, thread.agent_b_id],
+    }
+
+@app.post("/thread/{thread_id}/start_session")
+def start_thread_session(thread_id: str, scene_id: str = "central_perk"):
+    """
+    Open a live dialogue session on an existing thread.
+    Loads memory automatically.
+    """
+    thread = _REGISTRY.get(thread_id)
+    if not thread:
+        return {"error": "thread not found"}
+
+    participants = [thread.agent_a_id, thread.agent_b_id]
+    engine = _DE(participants, scene_id=scene_id, thread=thread)
+    _sessions[thread_id] = engine   # use thread_id as session key for stable routing
+    return {
+        "thread_id":     thread_id,
+        "scene":         engine.session.scene.id,
+        "participants":  participants,
+        "episode_count": thread.episode_count,
+        "has_memory":    thread.episode_count > 0,
+    }
+
+@app.get("/thread/{thread_id}")
+def get_thread(thread_id: str):
+    thread = _REGISTRY.get(thread_id)
+    if not thread:
+        return {"error": "not found"}
+    return thread.to_dict()
+
+@app.get("/agent/{agent_id}/threads")
+def get_agent_threads(agent_id: str):
+    """All threads this agent has — for inbox view."""
+    threads = _REGISTRY.threads_for_agent(agent_id)
+    return [
+        {
+            "thread_id":     t.thread_id,
+            "other_agent":   t.agent_b_id if t.agent_a_id == agent_id else t.agent_a_id,
+            "episode_count": t.episode_count,
+            "last_met_at":   t.last_met_at,
+            "relationship":  t.relationship_a_to_b if t.agent_a_id == agent_id
+                             else t.relationship_b_to_a,
+        }
+        for t in threads
+    ]
+
+@app.post("/thread/{thread_id}/close_episode")
+def close_episode(thread_id: str, outcome_valence: float = 0.0):
+    """
+    Called when a dialogue session ends.
+    Records the episode into the thread and updates relationship.
+    """
+    thread = _REGISTRY.get(thread_id)
+    engine = _sessions.get(thread_id)
+    if not thread or not engine:
+        return {"error": "thread or session not found"}
+
+    session  = engine.session
+    turns    = len(session.turns)
+    scene_id = session.scene.id
+    intensity = min(0.9, 0.2 + turns * 0.06)
+
+    # Build summaries from last turn
+    def _summary(agent_id):
+        own = [t.moment_text for t in session.turns if t.speaker_id == agent_id]
+        other = [t.moment_text for t in session.turns if t.speaker_id != agent_id]
+        if own:
+            return own[-1][:80] + ("…" if len(own[-1]) > 80 else "")
+        return "was present."
+
+    sa = _summary(thread.agent_a_id)
+    sb = _summary(thread.agent_b_id)
+
+    # Update relationship cache
+    from network.relationship_graph import CACHE as _REL_CACHE
+    _REL_CACHE.update_after_episode(
+        thread.agent_a_id, thread.agent_b_id,
+        intensity, outcome_valence, turns
+    )
+    rel_ab = _REL_CACHE.get(thread.agent_a_id, thread.agent_b_id)
+    rel_ba = _REL_CACHE.get(thread.agent_b_id, thread.agent_a_id)
+
+    _REGISTRY.record_episode(
+        thread, scene_id, turns, intensity, outcome_valence,
+        sa, sb, rel_ab, rel_ba
+    )
+
+    return {
+        "thread_id":     thread_id,
+        "episode_number": thread.episode_count,
+        "intensity":     intensity,
+        "outcome_valence": outcome_valence,
+        "relationship_updated": True,
+    }

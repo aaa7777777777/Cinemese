@@ -1,0 +1,32 @@
+{
+  "thread_id": "2bd853c159d8",
+  "agent_a_id": "chandler_bing",
+  "agent_b_id": "joey_tribbiani",
+  "created_at": "2026-03-15T08:23:32",
+  "last_met_at": "2026-03-15T08:23:32",
+  "episode_count": 1,
+  "episodes": [
+    {
+      "episode_number": 1,
+      "ts": "2026-03-15T08:23:32",
+      "scene_id": "central_perk",
+      "turns": 5,
+      "intensity": 0.55,
+      "outcome_valence": 0.4,
+      "summary_a": "said something that landed differently than expected.",
+      "summary_b": "offered food. it helped more than expected."
+    }
+  ],
+  "relationship_a_to_b": {
+    "weight": 0.52,
+    "register": "something was established.",
+    "valence": "neutral"
+  },
+  "relationship_b_to_a": {
+    "weight": 0.52,
+    "register": "something was established.",
+    "valence": "neutral"
+  },
+  "owner_a": "user_ariel",
+  "owner_b": "user_bob"
+}
